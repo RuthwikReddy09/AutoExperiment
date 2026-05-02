@@ -8,7 +8,6 @@ A LangGraph-based autonomous ML experimentation agent using:
 - Optuna hyperparameter optimization
 - MLflow experiment tracking
 - YAML configuration
-- Heuristic fallback when no OpenAI API key is available
 
 ## Folder structure
 
