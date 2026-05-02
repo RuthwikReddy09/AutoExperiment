@@ -62,7 +62,6 @@ agent:
 ```bash
 mlflow ui --backend-store-uri ./mlruns
 ```
-
 Open:
 
 ```text
