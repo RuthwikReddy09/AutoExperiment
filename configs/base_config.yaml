@@ -1,0 +1,54 @@
+experiment:
+  name: AutoExperiment-ResNet18-CIFAR10
+  seed: 42
+  max_iterations: 3
+  metric_to_optimize: val_accuracy
+  direction: maximize
+
+agent:
+  use_llm_planner: false
+  openai_model: gpt-4o-mini
+  temperature: 0.0
+
+optuna:
+  n_trials: 4
+  timeout_seconds: null
+
+training:
+  dataset: cifar10
+  data_dir: ./data
+  num_classes: 10
+  model_name: resnet18
+  pretrained: false
+  freeze_backbone: false
+  device: auto
+  epochs: 3
+  batch_size: 128
+  num_workers: 2
+  lr: 0.001
+  weight_decay: 0.0001
+  dropout: 0.2
+  optimizer: adamw
+  gradient_clip: 1.0
+  quick_debug: true
+  debug_train_samples: 4096
+  debug_val_samples: 1024
+
+search_space:
+  lr:
+    type: float
+    low: 0.00001
+    high: 0.01
+    log: true
+  weight_decay:
+    type: float
+    low: 0.000001
+    high: 0.01
+    log: true
+  dropout:
+    type: float
+    low: 0.0
+    high: 0.5
+  batch_size:
+    type: categorical
+    choices: [64, 128, 256]
